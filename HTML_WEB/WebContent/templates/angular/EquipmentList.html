@@ -1,0 +1,27 @@
+<div>
+	<button ng-click="newEquip()" class="btn">Add</button>
+	<table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Equipment Name</th>
+            <th>License</th>
+            <th>State</th>
+            <th>Efficiency</th>
+            <th>Activity</th>
+            <th>Operator</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-ng-repeat="equip in equipments">
+            <td>{{ equip.equipName }}</td>
+            <td>{{ equip.license }}</td> 
+            <td>{{ equip.state }}</td>
+            <td>{{ equip.efficiency }}</td> 
+            <td>{{ equip.activity }}</td>
+            <td>{{ equip.operator }}</td> 
+            <td><button ng-click="editEquip(equip.pk)" class="btn btn-primary btn-sm">Edit</button></td>
+            <td><button ng-click="deleteEquip(equip.pk)" class="btn btn-danger btn-sm">Delete</button></td>                     
+        </tr>
+        </tbody>
+    </table>   
+</div>

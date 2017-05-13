@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence 
+	xmlns="http://java.sun.com/xml/ns/persistence"
+   	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+   	version="1.0"
+   	> 
+   
+	<persistence-unit name="pcc4_database">
+    	<jta-data-source>java:/PCC4_DS</jta-data-source>
+		<properties>
+		
+			<!-- Dialect for Oracle 11g. -->
+			<!--  <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle9Dialect"/>-->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+			<!-- Dialect for SQLServer. -->
+			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/-->
+			<!--  Alternative, we could use a system variable. -->
+			<!-- property name="hibernate.dialect" value="${HIBERNATE_DIALECT}"/-->
+			
+			<!-- Auto update of data structure. -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			
+			<!-- This parameter can allow to log sql request. -->
+			<property name="hibernate.show_sql" value="false"/>  
+			
+			<!-- PropriÃ©tÃ© Hibernate : nom de la DataSource dans JNDI. -->
+			<!-- property name="jboss.entity.manager.factory.jndi.name" value="java:PUs/pcc4_database" / -->
+			
+			<!-- PropriÃ©tÃ© Hibernate : Ã  documenter. -->
+			<!-- property name="hibernate.connection.release_mode" value="auto" /-->
+		</properties>
+	</persistence-unit>
+	
+</persistence>

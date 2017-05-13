@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Servlet</title>
+
+<!-- Bootstrap lib -->
+<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+ 
+ 	<!-- Menus -->
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+				 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				 	<span class="sr-only">Toggle navigation</span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+			     </button>
+			     <a class="navbar-brand" href="../../JqueryApp.html">Demo</a>
+		    </div>
+	
+			<!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		    	<ul class="nav navbar-nav">
+			        <li><a href="../../JqueryApp.html">Home <span class="sr-only">(current)</span></a></li>
+			        <li><a href="RestfulCRUD.html">Restful <span class="sr-only">(current)</span></a></li>  
+			        <li><a href="JmsWebsocket.html">WebSocket <span class="sr-only">(current)</span></a></li>        
+		      		<li class="active"><a href="Servlet.html">Servlet <span class="sr-only">(current)</span></a></li>
+		      </ul>      
+		    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+	
+	<iframe id="servlet" height="300" width="700"></iframe>
+	
+	<script type="text/javascript">
+		var host = window.location.host;
+    	var path = window.location.pathname;
+    	var webProject = path.substring(0, path.indexOf('/', 1));
+    
+		var servlet = document.getElementById("servlet");
+		servlet.src = "http://" + host + webProject + "/servlet/EquipmentServlet";
+	</script> 	
+	
+		
+		
+</div>
+
+<!-- Jquery lib -->
+<script src="../../js/jquery/lib/jquery-2.1.3.min.js"></script>
+
+<!-- Bootstrap lib -->
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

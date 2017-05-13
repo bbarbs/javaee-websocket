@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Rest</title>
+
+<!-- Bootstrap lib -->
+<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+ 
+ 	<!-- Menus 
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display 
+		    <div class="navbar-header">
+				 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				 	<span class="sr-only">Toggle navigation</span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+			     </button>
+			     <a class="navbar-brand" href="../../JqueryApp.html">Demo</a>
+		    </div>
+	
+			<!-- Collect the nav links, forms, and other content for toggling 
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		    	<ul class="nav navbar-nav">
+			        <li><a href="../../JqueryApp.html">Home <span class="sr-only">(current)</span></a></li>
+			        <li class="active"><a href="RestfulCRUD.html">Restful <span class="sr-only">(current)</span></a></li>  
+			        <li><a href="JmsWebsocket.html">WebSocket <span class="sr-only">(current)</span></a></li>        
+		     		<li><a href="Servlet.html">Servlet <span class="sr-only">(current)</span></a></li>
+		      </ul>      
+		    </div><!-- /.navbar-collapse 
+	  </div><!-- /.container-fluid 
+	</nav>-->
+	
+	<button id="btnAdd" class="btn">New Equip</button>
+	<button id="btnSave" class="btn">Save</button>
+	<br>	
+	<input id="equipPk" name="pk" type="number" hidden="true"/>
+	<br>
+	<div class="input-group">
+	  <span class="input-group-addon" id="sizing-addon2">Name</span>
+	  <input id="name" name="name" type="text" class="form-control" placeholder="Equipment Name" aria-describedby="sizing-addon2">  
+	</div>
+	<br>
+	<div class="input-group">
+	  <span class="input-group-addon" id="sizing-addon2">License</span>
+	  <input id="license" name="license" type="text" class="form-control" placeholder="License" aria-describedby="sizing-addon2">  
+	</div>
+	<br>
+	<div class="input-group">
+	  <span class="input-group-addon" id="sizing-addon2">State</span>
+	  <input id="state" name="state" type="text" class="form-control" placeholder="State" aria-describedby="sizing-addon2">  
+	</div>
+	<br>
+	<div class="input-group">
+	  <span class="input-group-addon" id="sizing-addon2">Efficiency</span>
+	  <input id="efficiency" name="efficiency" type="number" class="form-control" placeholder="Efficiency" aria-describedby="sizing-addon2">  
+	</div>
+	<br>
+	<div class="input-group">
+	  <span class="input-group-addon" id="sizing-addon2">Activity</span>
+	  <input id="activity" name="activity" type="text" class="form-control" placeholder="Activity" aria-describedby="sizing-addon2">  
+	</div>
+	<br>
+	<div class="input-group">
+	  <span class="input-group-addon" id="sizing-addon2">Operator</span>
+	  <input id="operator" name="operator" type="text" class="form-control" placeholder="Operator" aria-describedby="sizing-addon2">  
+	</div>	
+	<br>
+	
+	<label>List of Equipment:</label>
+		<div>
+			<ul id="equipList"></ul>
+		</div>	
+		
+		<div>
+			<table id="equipTable" class="table table-striped">
+				<thead>
+			        <tr>
+			            <th>Equipment Name</th>
+			            <th>License</th>
+			            <th>State</th>
+			            <th>Efficiency</th>
+			            <th>Activity</th>
+			            <th>Operator</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    </tbody>
+			</table>
+		</div>	
+		
+		<form>
+			<input id="textMessage" type="text" class="form-control" placeholder="Enter Message">
+			<br>
+			<input onclick="sendMessage();" value="Send Message" type="button" class="btn">
+		</form>
+		<br>
+		<textarea id="messagesTextArea" rows="20" cols="111"></textarea>
+			<script type="text/javascript">	
+				var websocket = new WebSocket("ws://" + document.location.host + "/HtmlWEB/equip/websocket");
+				var messagesTextArea = document.getElementById("messagesTextArea");
+				var textMessage = document.getElementById("textMessage");
+
+				websocket.onopen = function() {};
+								
+				websocket.onmessage = function(message) { 
+					processMessage(message); 
+				};
+								
+				websocket.onclose = function() {};
+				
+				websocket.onerror = function() {};		
+				
+				function processMessage(message) {
+					// Print request.
+					messagesTextArea.value += message.data + "\n";
+				}
+				
+				function sendMessage() {
+					// Send Message to ServerEndpoint.
+					websocket.send(textMessage.value);
+					textMessage.value = "";
+				}
+			</script>
+			
+</div>
+
+<!-- Jquery lib -->
+<script src="../../js/jquery/lib/jquery-2.1.3.min.js"></script>
+
+<!-- Jquery socket lib. 
+<script src="../../js/jquery/lib/jquery.websocket-0.0.1.js"></script>-->
+
+<!-- Bootstrap lib -->
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Script for ajax request. 
+<script src="../../js/jquery/scripts/socketApp.js"></script>-->
+
+</body>
+</html>
